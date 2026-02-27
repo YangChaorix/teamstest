@@ -1,0 +1,68 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+    "version": "1.0.2",
+    "manifestVersion": "1.21",
+    "id": "${{TEAMS_APP_ID}}",
+    "name": {
+        "short": "HAP-Bot10",
+        "full": "Full name for HAP-Bot10"
+    },
+    "developer": {
+        "name": "My App, Inc.",
+        "websiteUrl": "https://p-demo.mingdaoyun.cn/",
+        "privacyUrl": "https://p-demo.mingdaoyun.cn/",
+        "termsOfUseUrl": "https://p-demo.mingdaoyun.cn"
+    },
+    "description": {
+        "short": "Short description of HAP-Bot10",
+        "full": "Full description of HAP-Bot10"
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+        {
+            "botId": "344cc10a-9bfe-4e17-a117-40beccb32e8f",
+            "scopes": [
+                "personal",
+                "team",
+                "groupChat"
+            ],
+            "isNotificationOnly": false,
+            "commandLists": [
+                {
+                    "scopes": [
+                        "personal",
+                        "team",
+                        "groupChat"
+                    ],
+                    "commands": [
+                        {
+                            "title": "welcome",
+                            "description": "Resend welcome card of this Bot"
+                        },
+                        {
+                            "title": "learn",
+                            "description": "Learn about Adaptive Card and Bot Command"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "p-demo.mingdaoyun.cn",
+        "*.mingdaoyun.cn",
+        "teams.microsoft.com",
+        "*.teams.microsoft.com"
+    ],
+    "webApplicationInfo": {
+        "id": "344cc10a-9bfe-4e17-a117-40beccb32e8f"
+    }
+}

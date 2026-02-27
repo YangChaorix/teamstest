@@ -1,0 +1,35 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "审批已处理",
+            "weight": "bolder",
+            "size": "medium",
+            "wrap": true
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                {
+                    "title": "标题:",
+                    "value": "${title}"
+                },
+                {
+                    "title": "内容:",
+                    "value": "${content}"
+                },
+                {
+                    "title": "来源:",
+                    "value": "${source}"
+                },
+                {
+                    "title": "处理结果:",
+                    "value": "${msgText}"
+                }
+            ]
+        }
+    ]
+}

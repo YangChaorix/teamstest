@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  app:
+    image: registry.cn-hangzhou.aliyuncs.com/mdpublic/teams:202508261643 # 镜像名称
+    networks:
+      - script_default
+    ports:
+      - "13978:3978"
+    volumes:
+      - ./env/.env.local:/usr/local/teams/.env.local # 配置文件映射
+    environment:
+      - MONGODB_CONNECTION_STRING=mongodb://sc:27017/MDSso?maxIdleTimeMS=600001&maxLifeTimeMS=1800001 #
+networks:
+  script_default:
+    external: true

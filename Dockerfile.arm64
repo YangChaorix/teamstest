@@ -1,0 +1,32 @@
+FROM hub.mingdao.com/runtime/arm64/nodejs:20.13.1-pkg as builder
+
+WORKDIR /usr/local/teams
+COPY . /usr/local/teams
+
+ENV USER root
+
+RUN npm install --unsafe-perm
+RUN npm run build:arm
+
+FROM hub.mingdao.com/runtime/arm64/pdruntime:1.0.0
+WORKDIR /usr/local/teams
+
+ENV TIME_ZONE Asia/Shanghai
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN npm install -g pm2@5
+
+
+COPY --from=builder /usr/local/teams/package /usr/local/teams
+COPY --from=builder /usr/local/teams/start.json /usr/local/teams/start.json
+
+
+EXPOSE 3978
+CMD ["pm2-runtime", "./start.json"]
+
+
+
+
+
+

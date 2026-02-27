@@ -1,0 +1,60 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "审批请求",
+      "weight": "bolder",
+      "size": "medium"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "标题:",
+          "value": "${title}"
+        },
+        {
+          "title": "内容:",
+          "value": "${content}"
+        },
+        {
+          "title": "来源:",
+          "value": "${source}"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "审批同意",
+      "data": {
+        "action": "approve",
+        "instanceId": "${instanceId}",
+        "workId": "${workId}",
+        "accountId": "${accountId}",
+        "title": "${title}",
+        "content": "${content}",
+        "source": "${source}"
+      },
+      "style": "positive"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "审批拒绝",
+      "data": {
+        "action": "reject",
+        "instanceId": "${instanceId}",
+        "workId": "${workId}",
+        "accountId": "${accountId}",
+        "title": "${title}",
+        "content": "${content}",
+        "source": "${source}"
+      },
+      "style": "destructive"
+    }
+  ]
+}

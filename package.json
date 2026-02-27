@@ -1,0 +1,39 @@
+{
+    "name": "bot",
+    "version": "1.0.1",
+    "description": "Notification Bot Service (Express)",
+    "bin": "./app.js",
+    "main": "./app.js",
+    "pkg": {
+        "assets": [
+            "node_modules/lodash/**/*.js",
+            "node_modules/axios/dist/node/axios.cjs"
+        ],
+        "outputPath": "package"
+    },
+    "scripts": {
+        "dev": "nodemon --inspect=9239 --signal SIGINT ./app.js",
+        "build": "pkg . --options expose-gc,openssl-legacy-provider --t node20-linux-x64 --out-path package",
+        "build:arm": "pkg . --options expose-gc,openssl-legacy-provider  --target node20-linux-arm64 --out-path package"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com"
+    },
+    "dependencies": {
+        "@microsoft/agents-hosting": "^0.2.14",
+        "@microsoft/teamsfx": "^4.0.0",
+        "adaptive-expressions": "^4.23.1",
+        "adaptivecards": "^3.0.5",
+        "adaptivecards-templating": "^2.3.1",
+        "dotenv": "^17.2.1",
+        "express": "^5.0.1",
+        "glob": "^7.1.6",
+        "mongoose": "5.13",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {
+        "env-cmd": "^10.1.0",
+        "nodemon": "^3.1.7"
+    }
+}
