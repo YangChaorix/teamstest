@@ -18,6 +18,7 @@ const notificationApp = new ConversationBot({
   botAppId: process.env.BOT_ID,
   botAppPassword: process.env.BOT_PASSWORD,
   botAppTenantId: process.env.BOT_TENANT_ID,
+  botAppType: 'SingleTenant',
   // Enable notification
   notification: {
     enabled: true,
