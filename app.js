@@ -1,4 +1,15 @@
 // app.js
+
+// Must be first: patch Node.js https to use HTTPS_PROXY if set.
+// Node.js does NOT automatically respect HTTPS_PROXY unlike curl/wget.
+const _httpsProxy = process.env.HTTPS_PROXY || process.env.https_proxy;
+if (_httpsProxy) {
+  const { HttpsProxyAgent } = require('https-proxy-agent');
+  require('https').globalAgent = new HttpsProxyAgent(_httpsProxy);
+  require('http').globalAgent = new (require('https-proxy-agent').HttpsProxyAgent)(_httpsProxy);
+  console.log('[Proxy] Node.js HTTPS agent configured via:', _httpsProxy);
+}
+
 const path = require('path');
 const dotenv = require('dotenv');
 
