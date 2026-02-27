@@ -1,20 +1,9 @@
 // app.js
 
-// Must be first: patch Node.js https to use HTTPS_PROXY if set.
-// Node.js does NOT automatically respect HTTPS_PROXY unlike curl/wget.
-//
-// IMPORTANT: require('https-proxy-agent') must be at the top level (not inside
-// the if-block) so that `pkg` static analysis detects and bundles it into the
-// binary. A conditional require is invisible to pkg's bundler.
-const { HttpsProxyAgent } = require('https-proxy-agent');
-
-const _httpsProxy = process.env.HTTPS_PROXY || process.env.https_proxy;
-if (_httpsProxy) {
-  const agent = new HttpsProxyAgent(_httpsProxy);
-  require('https').globalAgent = agent;
-  require('http').globalAgent = agent;
-  console.log('[Proxy] Node.js HTTPS/HTTP agent configured via:', _httpsProxy);
-}
+// Must be first: bootstrap global-agent to make Node.js respect
+// GLOBAL_AGENT_HTTPS_PROXY / GLOBAL_AGENT_HTTP_PROXY env vars.
+// Node.js does NOT automatically use proxy env vars unlike curl/wget.
+require('global-agent/bootstrap');
 
 const path = require('path');
 const dotenv = require('dotenv');
