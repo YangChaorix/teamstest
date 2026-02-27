@@ -7,7 +7,9 @@
     "pkg": {
         "assets": [
             "node_modules/lodash/**/*.js",
-            "node_modules/axios/dist/node/axios.cjs"
+            "node_modules/axios/dist/node/axios.cjs",
+            "node_modules/https-proxy-agent/**/*",
+            "node_modules/agent-base/**/*"
         ],
         "outputPath": "package"
     },
